@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.product.dto.ProductRequestDTO;
 import com.product.dto.ProductResponseDTO;
-import com.product.entity.Product;
 import com.product.service.ProductService;
-
-import jakarta.ws.rs.QueryParam;
 
 @RestController
 @RequestMapping("/api/product")
