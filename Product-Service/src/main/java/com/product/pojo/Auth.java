@@ -1,4 +1,5 @@
 package com.product.pojo;
+//plain old java object
 
 import java.time.LocalDate;
 
