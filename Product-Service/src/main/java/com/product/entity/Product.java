@@ -1,13 +1,10 @@
-package com.auth.entity;
+package com.product.entity;
 
 import java.time.LocalDate;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,17 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "auth_entity")
-public class Auth {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int productId;
 	private int authId;
-	@Column(unique = true)
-	private String email;
-	private String password;
-	private String phoneNo;
-	private String address;
+	private String productName;
+	private int price;
+	private String type;
 	private LocalDate createdAt;
 
 }
