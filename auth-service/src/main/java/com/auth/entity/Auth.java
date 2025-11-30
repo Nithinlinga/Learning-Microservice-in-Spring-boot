@@ -28,5 +28,10 @@ public class Auth {
 	private String phoneNo;
 	private String address;
 	private LocalDate createdAt;
+	private Role role;
+	
+	public enum Role{
+		ADMIN,USER
+	}
 
 }

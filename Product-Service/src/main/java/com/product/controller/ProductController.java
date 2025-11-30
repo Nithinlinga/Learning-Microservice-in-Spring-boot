@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +25,14 @@ public class ProductController {
 	private ProductService productService;
 	
 	@PostMapping("/add")
-	public ResponseEntity<ProductResponseDTO>  addProduct(@RequestBody ProductRequestDTO productDto){
+	public ResponseEntity<ProductResponseDTO>  addProduct(@RequestHeader("X-Role") String role,@RequestBody ProductRequestDTO productDto){
+		if(role.equals("ADMIN")) {
+			
 		return new ResponseEntity<ProductResponseDTO>(productService.addProduct(productDto),HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<>(null,HttpStatus.UNAUTHORIZED);
+		}
 	}
 	
 	@GetMapping("/all")
@@ -39,8 +46,14 @@ public class ProductController {
 	}
 	
 	@GetMapping("/email")
-	public ResponseEntity<List<ProductResponseDTO>>  getProductById(@RequestParam String email){
+	public ResponseEntity<List<ProductResponseDTO>>  getProductById(@RequestHeader("X-Role") String role,@RequestParam String email){
+		if(role.equals("ADMIN")) {
 		return new ResponseEntity<List<ProductResponseDTO>>(productService.getProductByEmail(email),HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null,HttpStatus.UNAUTHORIZED);
+			
+		}
 	}
 	
 

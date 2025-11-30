@@ -3,6 +3,7 @@ package com.auth.service;
 import org.springframework.stereotype.Service;
 
 import com.auth.dto.LoginDTO;
+import com.auth.dto.LoginResponseDTO;
 import com.auth.dto.RegisterDTO;
 import com.auth.dto.ResponseDTO;
 
@@ -11,7 +12,7 @@ public interface AuthService {
 
 	ResponseDTO registerUser(RegisterDTO registerDTO);
 
-	ResponseDTO loginUser(LoginDTO loginDTO);
+	LoginResponseDTO loginUser(LoginDTO loginDTO);
 
 	ResponseDTO getUserDetails(String email);
 	
