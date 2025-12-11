@@ -4,7 +4,7 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;
 @Component
 public class JwtUtil {
-    private final String SECRET = "vbooking1234567890vbooking1234567890";
+    private final String SECRET = "7ca58d9c6f3ab1f4c875e19d39b7ac543e2d5c99fa93d1210f07b9e9de2ab47e";
 
     public Claims extractClaims(String token) {
         return Jwts.parser()

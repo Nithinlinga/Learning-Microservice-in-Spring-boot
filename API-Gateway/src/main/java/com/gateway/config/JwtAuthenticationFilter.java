@@ -24,9 +24,9 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
         String path = exchange.getRequest().getPath().toString();
         System.out.println("Final Request Path: " + path);
         
-        if (path.contains("/api/v1/auth/login") ||
-        	    path.contains("/api/v1/auth/register") || 
-        	    path.contains("/api/v1/auth/validate")) {
+        if (path.contains("/api/auth/login") ||
+        	    path.contains("/api/auth/register") ||
+        	    path.contains("/api/auth/validate") || path.contains("api/product/all") || path.contains("api/product/product")) {
         	    return chain.filter(exchange);
         	}
         HttpHeaders headers = exchange.getRequest().getHeaders();
