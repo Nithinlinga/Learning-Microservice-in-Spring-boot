@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Service
 public class PaymentServiceImpl implements PaymentService {
     @Autowired
@@ -39,4 +41,13 @@ public class PaymentServiceImpl implements PaymentService {
         return modelMapper.map(paymentRepository.save(payment), ResponseDTO.class);
 
     }
+
+    @Override
+    public List<ResponseDTO> getProductPaymentById(String email) {
+        Auth auth = circuitBreakerConfig.getUserProfile(email);
+        List<Payment> payments=paymentRepository.findAllByAuthId(auth.getAuthId());
+        return payments.stream().map(p->modelMapper.map(p, ResponseDTO.class)).toList();
+    }
+
+
 }
